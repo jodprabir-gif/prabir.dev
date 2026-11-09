@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Saffron House, Kolkata</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="topbar">
+    <a class="brand" href="index.html">SAFFRON HOUSE<small>KOLKATA · EST. 2012</small></a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="story.html" class="active">Our Story</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reservations.html">Reservations</a>
+      <a href="location.html">Location</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="cta" href="reservations.html">Book a Table</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap split">
+    <img data-photo="chef" alt="Our chef plating a dish">
+    <div>
+      <h2>Our Story</h2>
+      <p>Saffron House began in 2012 with one family recipe book and a small kitchen on Park Street. The first dish we ever served was our grandmother's Kolkata biryani — and it is still the first thing most guests order.</p>
+      <p>Twelve years later the dining room is bigger, but the cooking has not changed: whole spices ground fresh every morning, biryani sealed on dum, and every plate finished by hand.</p>
+      <p>We cook the way we eat at home — slowly, generously, and for the people we love.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff">
+  <div class="wrap split">
+    <div>
+      <h2>From our kitchen</h2>
+      <p>Our kitchen team starts before sunrise — marinating, grinding spices, and preparing the day's gravies from scratch. Nothing comes from a packet, and nothing is rushed.</p>
+      <p>What you taste on the plate is what we tasted growing up: the same recipes, the same patience, the same love for feeding a full house.</p>
+      <a class="btn" href="menu.html">See the Menu</a>
+    </div>
+    <img data-photo="kitchen" alt="Chefs at work in the Saffron House kitchen">
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What we believe</h2>
+    <div class="cards">
+      <div class="card"><div class="pad"><h3>Fresh, every day</h3><p>Spices ground daily, vegetables bought each morning, gravies made from scratch — never stored, never reheated.</p></div></div>
+      <div class="card"><div class="pad"><h3>Family first</h3><p>Big tables, high chairs, patient staff. Children, grandparents and everyone in between are welcome here.</p></div></div>
+      <div class="card"><div class="pad"><h3>Honest prices</h3><p>Premium food at fair prices. A full family meal should feel like a celebration, not a splurge.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>SAFFRON HOUSE</h4><p>Fine Indian dining in Kolkata. Family recipes, slow cooking, warm hospitality.</p></div>
+    <div><h4>Visit Us</h4><p>Park Street, Kolkata<br>Lunch 12:00 – 3:30 PM<br>Dinner 7:00 – 11:00 PM</p></div>
+    <div><h4>Contact</h4><p>Call: +91 90000 00000<br>hello@saffronhouse.demo</p></div>
+  </div>
+  <p class="fine">Demo website — sample content for the Saffron House restaurant template. Replace with your restaurant's real details. · Website template by <a href="../../index.html">PRABIR.DEV</a></p>
+</footer>
+<script src="photos.js"></script>
+<script>
+(function(){function fill(){if(!window.RESTO_PHOTOS)return false;document.querySelectorAll("[data-photo]").forEach(function(im){var k=im.getAttribute("data-photo");if(RESTO_PHOTOS[k])im.src=RESTO_PHOTOS[k];});return true;}if(!fill()){var t=setInterval(function(){if(fill())clearInterval(t);},100);setTimeout(function(){clearInterval(t);},5000);}})();
+</script>
+</body>
+</html>

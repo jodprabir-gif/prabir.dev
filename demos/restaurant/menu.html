@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Saffron House, Kolkata</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="topbar">
+    <a class="brand" href="index.html">SAFFRON HOUSE<small>KOLKATA · EST. 2012</small></a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="menu.html" class="active">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reservations.html">Reservations</a>
+      <a href="location.html">Location</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="cta" href="reservations.html">Book a Table</a>
+  </div>
+</header>
+
+<div class="hero">
+  <img data-photo="spread" alt="Saffron House food spread">
+  <div class="hero-text">
+    <h1>OUR MENU</h1>
+    <p>Slow-cooked, generously spiced, made fresh every morning. Prices include all taxes.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap" style="max-width:760px">
+    <div class="menu-group">
+      <h3>Signature Biryani <span class="tag">MUST TRY</span></h3>
+      <div class="dish"><div><b>Kolkata Chicken Biryani</b><span>Our famous dum biryani — saffron rice, tender chicken, potato, egg, fried onion</span></div><span class="price">₹349</span></div>
+      <div class="dish"><div><b>Mutton Biryani</b><span>Slow-cooked mutton, aged basmati, saffron, kewra water</span></div><span class="price">₹429</span></div>
+      <div class="dish"><div><b>Veg Biryani</b><span>Seasonal vegetables, paneer, saffron rice, mint raita</span></div><span class="price">₹279</span></div>
+    </div>
+    <div class="menu-group">
+      <h3>Starters</h3>
+      <div class="dish"><div><b>Paneer Tikka</b><span>Char-grilled cottage cheese, peppers, mint chutney</span></div><span class="price">₹299</span></div>
+      <div class="dish"><div><b>Chicken 65</b><span>Spicy fried chicken, curry leaves, green chilli</span></div><span class="price">₹329</span></div>
+      <div class="dish"><div><b>Veg Samosa (2 pc)</b><span>Crisp pastry, spiced potato-pea filling, tamarind chutney</span></div><span class="price">₹149</span></div>
+    </div>
+    <div class="menu-group">
+      <h3>Mains</h3>
+      <div class="dish"><div><b>Butter Chicken</b><span>Tandoori chicken folded into tomato-butter gravy, cream</span></div><span class="price">₹399</span></div>
+      <div class="dish"><div><b>Mutton Rogan Josh</b><span>Slow-braised mutton, Kashmiri chilli, whole spices</span></div><span class="price">₹449</span></div>
+      <div class="dish"><div><b>Palak Paneer</b><span>Fresh spinach, soft paneer, garlic, green chilli</span></div><span class="price">₹299</span></div>
+      <div class="dish"><div><b>Dal Makhani</b><span>Black urad simmered overnight, butter, cream</span></div><span class="price">₹279</span></div>
+    </div>
+    <div class="menu-group">
+      <h3>Breads</h3>
+      <div class="dish"><div><b>Butter Naan</b></div><span class="price">₹69</span></div>
+      <div class="dish"><div><b>Garlic Naan</b></div><span class="price">₹89</span></div>
+      <div class="dish"><div><b>Tandoori Roti</b></div><span class="price">₹49</span></div>
+    </div>
+    <div class="menu-group">
+      <h3>Desserts &amp; Drinks</h3>
+      <div class="dish"><div><b>Rasgulla (2 pc)</b><span>Soft, syrup-soaked, served chilled</span></div><span class="price">₹129</span></div>
+      <div class="dish"><div><b>Gulab Jamun (2 pc)</b><span>Warm, with vanilla ice cream</span></div><span class="price">₹149</span></div>
+      <div class="dish"><div><b>Sweet Lassi</b></div><span class="price">₹99</span></div>
+      <div class="dish"><div><b>Masala Chai</b></div><span class="price">₹79</span></div>
+    </div>
+    <p style="text-align:center;color:#6b5a44">Jain and no-onion-garlic preparations available on request. Please tell our staff about any allergies.</p>
+    <div style="text-align:center;margin-top:20px"><a class="btn" href="reservations.html">Book a Table</a></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>SAFFRON HOUSE</h4><p>Fine Indian dining in Kolkata. Family recipes, slow cooking, warm hospitality.</p></div>
+    <div><h4>Visit Us</h4><p>Park Street, Kolkata<br>Lunch 12:00 – 3:30 PM<br>Dinner 7:00 – 11:00 PM</p></div>
+    <div><h4>Contact</h4><p>Call: +91 90000 00000<br>hello@saffronhouse.demo</p></div>
+  </div>
+  <p class="fine">Demo website — sample content for the Saffron House restaurant template. Replace with your restaurant's real details. · Website template by <a href="../../index.html">PRABIR.DEV</a></p>
+</footer>
+<script src="photos.js"></script>
+<script>
+(function(){function fill(){if(!window.RESTO_PHOTOS)return false;document.querySelectorAll("[data-photo]").forEach(function(im){var k=im.getAttribute("data-photo");if(RESTO_PHOTOS[k])im.src=RESTO_PHOTOS[k];});return true;}if(!fill()){var t=setInterval(function(){if(fill())clearInterval(t);},100);setTimeout(function(){clearInterval(t);},5000);}})();
+</script>
+</body>
+</html>

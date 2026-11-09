@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Saffron House, Kolkata</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="topbar">
+    <a class="brand" href="index.html">SAFFRON HOUSE<small>KOLKATA · EST. 2012</small></a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reservations.html">Reservations</a>
+      <a href="location.html">Location</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <a class="cta" href="reservations.html">Book a Table</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Contact Us</h2>
+    <p class="lead">Questions, feedback, bulk orders or party bookings — write to us and we will get back within a day.</p>
+    <div class="split" style="align-items:start">
+      <div>
+        <h2 style="text-align:left">Talk to us</h2>
+        <p><b>Call:</b> +91 90000 00000</p>
+        <p><b>Email:</b> hello@saffronhouse.demo</p>
+        <p><b>Address:</b> Park Street, Kolkata</p>
+        <p><b>Hours:</b> Lunch 12:00 – 3:30 PM · Dinner 7:00 – 11:00 PM</p>
+        <p style="margin-top:14px"><a class="btn" href="reservations.html">Book a Table</a></p>
+        <p style="margin-top:14px;color:#6b5a44">For large parties, weddings and corporate dinners, please call us directly so we can plan your menu together.</p>
+      </div>
+      <form class="book" id="contactForm">
+        <label for="cname">Your name</label>
+        <input id="cname" type="text" placeholder="e.g. Priya Banerjee" required>
+        <label for="cemail">Email</label>
+        <input id="cemail" type="email" placeholder="you@example.com" required>
+        <label for="cmsg">Message</label>
+        <textarea id="cmsg" rows="5" placeholder="Write your message here..." required></textarea>
+        <button class="btn" type="submit">Send Message</button>
+        <div class="note" id="contactNote"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>SAFFRON HOUSE</h4><p>Fine Indian dining in Kolkata. Family recipes, slow cooking, warm hospitality.</p></div>
+    <div><h4>Visit Us</h4><p>Park Street, Kolkata<br>Lunch 12:00 – 3:30 PM<br>Dinner 7:00 – 11:00 PM</p></div>
+    <div><h4>Contact</h4><p>Call: +91 90000 00000<br>hello@saffronhouse.demo</p></div>
+  </div>
+  <p class="fine">Demo website — sample content for the Saffron House restaurant template. Replace with your restaurant's real details. · Website template by <a href="../../index.html">PRABIR.DEV</a></p>
+</footer>
+<script src="photos.js"></script>
+<script>
+(function(){function fill(){if(!window.RESTO_PHOTOS)return false;document.querySelectorAll("[data-photo]").forEach(function(im){var k=im.getAttribute("data-photo");if(RESTO_PHOTOS[k])im.src=RESTO_PHOTOS[k];});return true;}if(!fill()){var t=setInterval(function(){if(fill())clearInterval(t);},100);setTimeout(function(){clearInterval(t);},5000);}})();
+document.getElementById("contactForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  var note=document.getElementById("contactNote");
+  note.textContent="Thank you, "+document.getElementById("cname").value+"! Your message has been received. We will reply within a day. (Demo — no real message is sent.)";
+  note.style.display="block";
+  note.scrollIntoView({behavior:"smooth",block:"center"});
+});
+</script>
+</body>
+</html>

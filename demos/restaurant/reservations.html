@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservations — Saffron House, Kolkata</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="topbar">
+    <a class="brand" href="index.html">SAFFRON HOUSE<small>KOLKATA · EST. 2012</small></a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reservations.html" class="active">Reservations</a>
+      <a href="location.html">Location</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="cta" href="reservations.html">Book a Table</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Book a Table</h2>
+    <p class="lead">Reserve your table in under a minute. For parties of 10 or more, please call us directly.</p>
+    <div class="split" style="align-items:start">
+      <img data-photo="rooftop" alt="Rooftop dining in the evening">
+      <form class="book" id="bookForm">
+        <label for="rname">Your name</label>
+        <input id="rname" type="text" placeholder="e.g. Rahul Sharma" required>
+        <label for="rphone">Phone number</label>
+        <input id="rphone" type="tel" placeholder="e.g. 98300 12345" required>
+        <label for="rdate">Date</label>
+        <input id="rdate" type="date" required>
+        <label for="rtime">Time</label>
+        <select id="rtime">
+          <option>Lunch — 12:00 PM</option>
+          <option>Lunch — 1:00 PM</option>
+          <option>Lunch — 2:00 PM</option>
+          <option>Dinner — 7:00 PM</option>
+          <option>Dinner — 8:00 PM</option>
+          <option>Dinner — 9:00 PM</option>
+        </select>
+        <label for="rguests">Guests</label>
+        <select id="rguests">
+          <option>2 guests</option>
+          <option>3 guests</option>
+          <option>4 guests</option>
+          <option>5 guests</option>
+          <option>6 guests</option>
+          <option>8 guests</option>
+          <option>10+ guests (we will call you)</option>
+        </select>
+        <label for="rnote">Special request (optional)</label>
+        <textarea id="rnote" rows="3" placeholder="Birthday, anniversary, window seat, high chair..."></textarea>
+        <button class="btn" type="submit">Request Reservation</button>
+        <div class="note" id="bookNote"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>SAFFRON HOUSE</h4><p>Fine Indian dining in Kolkata. Family recipes, slow cooking, warm hospitality.</p></div>
+    <div><h4>Visit Us</h4><p>Park Street, Kolkata<br>Lunch 12:00 – 3:30 PM<br>Dinner 7:00 – 11:00 PM</p></div>
+    <div><h4>Contact</h4><p>Call: +91 90000 00000<br>hello@saffronhouse.demo</p></div>
+  </div>
+  <p class="fine">Demo website — sample content for the Saffron House restaurant template. Replace with your restaurant's real details. · Website template by <a href="../../index.html">PRABIR.DEV</a></p>
+</footer>
+<script src="photos.js"></script>
+<script>
+(function(){function fill(){if(!window.RESTO_PHOTOS)return false;document.querySelectorAll("[data-photo]").forEach(function(im){var k=im.getAttribute("data-photo");if(RESTO_PHOTOS[k])im.src=RESTO_PHOTOS[k];});return true;}if(!fill()){var t=setInterval(function(){if(fill())clearInterval(t);},100);setTimeout(function(){clearInterval(t);},5000);}})();
+document.getElementById("bookForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  var n=document.getElementById("rname").value;
+  var d=document.getElementById("rdate").value;
+  var t=document.getElementById("rtime").value;
+  var g=document.getElementById("rguests").value;
+  var note=document.getElementById("bookNote");
+  note.textContent="Thank you, "+n+"! Your table request for "+g+" on "+d+" ("+t+") has been received. Our team will call you shortly to confirm. (Demo — no real booking is made.)";
+  note.style.display="block";
+  note.scrollIntoView({behavior:"smooth",block:"center"});
+});
+</script>
+</body>
+</html>

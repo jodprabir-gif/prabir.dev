@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saffron House — Fine Indian Dining, Kolkata</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="topbar">
+    <a class="brand" href="index.html">SAFFRON HOUSE<small>KOLKATA · EST. 2012</small></a>
+    <nav class="main">
+      <a href="index.html" class="active">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reservations.html">Reservations</a>
+      <a href="location.html">Location</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="cta" href="reservations.html">Book a Table</a>
+  </div>
+</header>
+
+<div class="hero">
+  <img data-photo="interior" alt="Saffron House dining hall">
+  <div class="hero-text">
+    <h1>SAFFRON HOUSE</h1>
+    <p>Fine Indian dining in the heart of Kolkata — slow-cooked biryani, family recipes and tables made for celebrations.</p>
+    <div class="btnrow">
+      <a class="btn" href="menu.html">View Menu</a>
+      <a class="btn ghost" href="reservations.html">Book a Table</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Why guests keep coming back</h2>
+    <p class="lead">A restaurant built around three simple things — honest food, warm service and room for the whole family.</p>
+    <div class="cards">
+      <div class="card">
+        <img data-photo="biryani" alt="Signature Kolkata chicken biryani">
+        <div class="pad"><h3>Signature Biryani</h3><p>Our Kolkata chicken biryani, slow-cooked on dum with saffron, potato and egg — the plate our kitchen is known for.</p></div>
+      </div>
+      <div class="card">
+        <img data-photo="birthday" alt="Family birthday dinner at Saffron House">
+        <div class="pad"><h3>Family Celebrations</h3><p>Birthdays, anniversaries and big family dinners — large tables, set menus and a team that treats your day like their own.</p></div>
+      </div>
+      <div class="card">
+        <img data-photo="rooftop" alt="Rooftop dining in the evening">
+        <div class="pad"><h3>Rooftop Evenings</h3><p>Open-air tables under the lights for slow dinners, monsoon air and the city glowing around you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff">
+  <div class="wrap split">
+    <img data-photo="dinner" alt="Family dinner at Saffron House">
+    <div>
+      <h2>One table, three generations</h2>
+      <p>From grandparents to grandchildren, our dining room is built for the whole family to sit together — no rushing, no small tables, just good food and long conversations.</p>
+      <p>Come for lunch, stay for dessert. That is how most of our regulars found us.</p>
+      <a class="btn" href="story.html">Read Our Story</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div>
+      <h2>Find us on Park Street</h2>
+      <p>Right in the middle of Kolkata's favourite food street — easy to reach, easy to find, and worth the trip.</p>
+      <p><b>Open:</b> Lunch 12:00 – 3:30 PM · Dinner 7:00 – 11:00 PM</p>
+      <a class="btn" href="location.html">Get Directions</a>
+    </div>
+    <img data-photo="exterior" alt="Saffron House entrance, Park Street Kolkata">
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>SAFFRON HOUSE</h4><p>Fine Indian dining in Kolkata. Family recipes, slow cooking, warm hospitality.</p></div>
+    <div><h4>Visit Us</h4><p>Park Street, Kolkata<br>Lunch 12:00 – 3:30 PM<br>Dinner 7:00 – 11:00 PM</p></div>
+    <div><h4>Contact</h4><p>Call: +91 90000 00000<br>hello@saffronhouse.demo</p></div>
+  </div>
+  <p class="fine">Demo website — sample content for the Saffron House restaurant template. Replace with your restaurant's real details. · Website template by <a href="../../index.html">PRABIR.DEV</a></p>
+</footer>
+<script src="photos.js"></script>
+<script>
+(function(){function fill(){if(!window.RESTO_PHOTOS)return false;document.querySelectorAll("[data-photo]").forEach(function(im){var k=im.getAttribute("data-photo");if(RESTO_PHOTOS[k])im.src=RESTO_PHOTOS[k];});return true;}if(!fill()){var t=setInterval(function(){if(fill())clearInterval(t);},100);setTimeout(function(){clearInterval(t);},5000);}})();
+</script>
+</body>
+</html>

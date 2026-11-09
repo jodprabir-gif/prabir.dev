@@ -119,7 +119,8 @@ function makeCard(t){
   body.appendChild(el("p", "price-note", "Add ₹3,500 for first-year domain + hosting. Choose either option."));
   const row = el("div", "btnrow");
   const demoBtn = el("a", "btn small ghost", "Live Demo");
-  demoBtn.href = "#/product/" + t.id;
+  if (t.id === 1){ demoBtn.href = "demos/restaurant/index.html"; demoBtn.target = "_blank"; demoBtn.rel = "noopener"; }
+  else { demoBtn.href = "#/product/" + t.id; }
   const buyBtn = el("a", "btn small green", "Buy Now");
   buyBtn.href = "#/product/" + t.id;
   const detBtn = el("a", "btn small", "Details");
@@ -216,6 +217,15 @@ function imagePromptFor(t){
   };
   return "Create an ultra-realistic premium website visual asset for a " + t.name + ". Scene: " + (scene[t.name] || "professional business environment and service photography") + ". Art direction: polished commercial photography, natural realistic lighting, refined composition, authentic details, premium brand aesthetic, high resolution, landscape 16:9, no text, no logos, no watermark. Keep clear negative space for website headline overlay. This is an original visual for PRABIR.DEV demo website, not a copy of any existing brand.";
 }
+/* ===== Restaurant demo photos (lazy-loaded, only for template 1) ===== */
+function loadRestoPhotos(cb){
+  if(window.RESTO_PHOTOS){ cb(); return; }
+  var s=document.createElement("script");
+  s.src="demos/restaurant/photos.js";
+  s.onload=function(){ cb(); };
+  s.onerror=function(){ cb(); };
+  document.head.appendChild(s);
+}
 function renderDetail(id){
   const box = $("#detailBox"); clear(box);
   const t = byId(id);
@@ -257,17 +267,40 @@ function renderDetail(id){
   pricebox.append(ownOption,hostedOption);
   pricebox.appendChild(el("p","package-includes","Domain + hosting option covers the first 1 year only. Renewal after year one is separate and depends on the provider and domain extension."));
   copy.appendChild(pricebox);
-  const actions=el("div","btnrow"); const buy=el("a","btn product-buy","CHOOSE OPTION / ORDER ON WHATSAPP"); buy.href=waLink(payMessage(t)); buy.target="_blank"; buy.rel="noopener"; const demoLink=el("a","btn ghost","Explore website pages ↓"); demoLink.href="#product-pages"; demoLink.addEventListener("click",function(e){e.preventDefault(); nav.scrollIntoView({behavior:"smooth",block:"start"});}); actions.append(buy,demoLink); copy.appendChild(actions);
+  const actions=el("div","btnrow"); const buy=el("a","btn product-buy","CHOOSE OPTION / ORDER ON WHATSAPP"); buy.href=waLink(payMessage(t)); buy.target="_blank"; buy.rel="noopener"; const demoLink=el("a","btn ghost","Explore website pages ↓"); demoLink.href="#product-pages"; demoLink.addEventListener("click",function(e){e.preventDefault(); nav.scrollIntoView({behavior:"smooth",block:"start"});}); if(t.id===1){const openDemo=el("a","btn","OPEN LIVE RESTAURANT DEMO"); openDemo.href="demos/restaurant/index.html"; openDemo.target="_blank"; openDemo.rel="noopener"; actions.append(openDemo);} actions.append(buy,demoLink); copy.appendChild(actions);
   const visual=el("div","product-visual"); visual.appendChild(el("div","visual-window-top","●  ●  ●     ORIGINAL BUSINESS WEBSITE CONCEPT"));
   const visualInner=el("div","visual-window-inner"); visualInner.style.background="linear-gradient(135deg,"+t.col+"dd,#101820)"; visualInner.appendChild(el("span","visual-kicker","A WEBSITE MADE FOR YOUR BUSINESS")); visualInner.appendChild(el("strong",null,t.head)); visualInner.appendChild(el("small",null,"Responsive · Multi-page · Customizable")); visual.appendChild(visualInner); hero.append(copy,visual); box.appendChild(hero);
   const nav=el("nav","detail-page-nav"); nav.id="product-pages"; nav.setAttribute("aria-label","Website page sections"); nav.appendChild(el("b",null,"INSIDE THIS WEBSITE")); sections.forEach(function(label,i){const a=el("a",null,label); a.href="#demo-section-"+i; nav.appendChild(a);}); box.appendChild(nav);
   const overview=el("section","product-overview"); overview.appendChild(el("div","section-kicker","01 / WEBSITE STRUCTURE")); overview.appendChild(el("h2",null,"A complete website, not just a single landing page")); overview.appendChild(el("p","section-lead","Every template opens as its own product page inside PRABIR.DEV. The delivered website is planned with dedicated, connected sections. Business-specific text, images, prices and real contact details will be added during customization."));
   const featureGrid=el("div","pro-feature-grid"); t.feat.forEach(function(f,i){const c=el("article","pro-feature"); c.appendChild(el("span","feature-index",String(i+1).padStart(2,"0"))); c.appendChild(el("h3",null,f)); c.appendChild(el("p",null,"Dedicated responsive section designed around the needs of this business.")); featureGrid.appendChild(c);}); overview.appendChild(featureGrid); box.appendChild(overview);
-  const showcase=el("section","showcase-section"); showcase.appendChild(el("div","section-kicker","02 / PAGE-BY-PAGE PREVIEW")); showcase.appendChild(el("h2",null,"Explore the pages included in this website")); showcase.appendChild(el("p","section-lead","Photo placeholders are intentional. Your original Flow AI images can be added later without rebuilding the page layout."));
-  const pageGrid=el("div","demo-page-grid"); sections.forEach(function(label,i){const card=el("article","demo-page-card"); card.id="demo-section-"+i; const image=el("div","demo-page-image"); image.style.setProperty("--tile",t.col); image.appendChild(el("span",null,String(i+1).padStart(2,"0"))); image.appendChild(el("small",null,"PHOTO SLOT · ADD YOUR IMAGE")); card.appendChild(image); card.appendChild(el("div","demo-page-copy")); card.lastChild.appendChild(el("h3",null,label)); card.lastChild.appendChild(el("p",null,"Professionally structured "+label.toLowerCase()+" page with responsive layout and clear navigation.")); pageGrid.appendChild(card);}); showcase.appendChild(pageGrid);
+  const showcase=el("section","showcase-section"); showcase.appendChild(el("div","section-kicker","02 / PAGE-BY-PAGE PREVIEW")); showcase.appendChild(el("h2",null,"Explore the pages included in this website")); showcase.appendChild(el("p","section-lead",t.id===1 ? "The restaurant demo is live with real photos — open it from the button above, or preview each page below." : "Photo placeholders are intentional. Your original Flow AI images can be added later without rebuilding the page layout."));
+  const pageGrid=el("div","demo-page-grid"); sections.forEach(function(label,i){const card=el("article","demo-page-card"); card.id="demo-section-"+i; const image=el("div","demo-page-image"); image.style.setProperty("--tile",t.col); image.appendChild(el("span",null,String(i+1).padStart(2,"0"))); image.appendChild(el("small",null,t.id===1 ? "REAL PHOTO · OPEN THE LIVE DEMO" : "PHOTO SLOT · ADD YOUR IMAGE")); card.appendChild(image); card.appendChild(el("div","demo-page-copy")); card.lastChild.appendChild(el("h3",null,label)); card.lastChild.appendChild(el("p",null,"Professionally structured "+label.toLowerCase()+" page with responsive layout and clear navigation.")); pageGrid.appendChild(card);}); showcase.appendChild(pageGrid);
+  if(t.id===1){
+    var restoPagePhotos=["interior","chef","spread","dinner","rooftop","exterior","kitchen"];
+    loadRestoPhotos(function(){
+      if(!window.RESTO_PHOTOS) return;
+      pageGrid.querySelectorAll(".demo-page-image").forEach(function(im,i){
+        var k=restoPagePhotos[i];
+        if(RESTO_PHOTOS[k]){ im.style.backgroundImage="url("+RESTO_PHOTOS[k]+")"; im.style.backgroundSize="cover"; im.style.backgroundPosition="center"; }
+      });
+    });
+  }
   const photoGallery=el("div","photo-slot-gallery");
-  photoGallery.appendChild(el("h3",null,"10 original photo slots — ready for your Flow AI images"));
-  for(let i=0;i<10;i++){const slot=el("div","photo-slot");slot.appendChild(el("b",null,"PHOTO "+String(i+1).padStart(2,"0")));slot.appendChild(el("small",null,"Replace with your generated image"));photoGallery.appendChild(slot);}
+  if(t.id===1){
+    photoGallery.appendChild(el("h3",null,"9 real photos inside the live restaurant demo"));
+    var restoGallery=[["interior","Dining hall"],["biryani","Signature biryani"],["spread","Family spread"],["birthday","Birthday dinner"],["dinner","Family dinner"],["rooftop","Rooftop evening"],["kitchen","In the kitchen"],["chef","Chef plating"],["exterior","Park Street entrance"]];
+    restoGallery.forEach(function(pair){var slot=el("div","photo-slot");slot.setAttribute("data-resto-photo",pair[0]);slot.appendChild(el("b",null,pair[1]));photoGallery.appendChild(slot);});
+    loadRestoPhotos(function(){
+      if(!window.RESTO_PHOTOS) return;
+      photoGallery.querySelectorAll("[data-resto-photo]").forEach(function(slot){
+        var k=slot.getAttribute("data-resto-photo");
+        if(RESTO_PHOTOS[k]){ slot.style.backgroundImage="url("+RESTO_PHOTOS[k]+")"; slot.style.backgroundSize="cover"; slot.style.backgroundPosition="center"; slot.style.color="#fff"; slot.style.textShadow="0 1px 6px rgba(0,0,0,.85)"; }
+      });
+    });
+  } else {
+    photoGallery.appendChild(el("h3",null,"10 original photo slots — ready for your Flow AI images"));
+    for(let i=0;i<10;i++){const slot=el("div","photo-slot");slot.appendChild(el("b",null,"PHOTO "+String(i+1).padStart(2,"0")));slot.appendChild(el("small",null,"Replace with your generated image"));photoGallery.appendChild(slot);}
+  }
   showcase.appendChild(photoGallery); box.appendChild(showcase);
   const location=el("section","location-placeholder"); location.appendChild(el("div","section-kicker","03 / LOCATION & VISIT US")); location.appendChild(el("h2",null,"A dedicated page for customers who want to visit in person")); location.appendChild(el("p",null,"The final business owner can add a verified address, Google Maps embed, directions link, opening hours and branch details. These are editable placeholders until real business information is supplied.")); const map=el("div","map-placeholder"); map.appendChild(el("span",null,"MAP PLACEHOLDER")); map.appendChild(el("small",null,"Add verified Google Maps embed during customization")); location.appendChild(map); box.appendChild(location);
   const details=el("section","product-overview deliver-section"); details.appendChild(el("div","section-kicker","04 / PACKAGE DETAILS")); details.appendChild(el("h2",null,"What is included in the package")); const perks=el("div","deliver-grid"); ["Complete multi-page website structure","Responsive desktop and mobile layout","One-year domain registration allowance included","One-year hosting included","SEO-friendly page structure","Editable website files and source code","Original image slots — add your generated photos","Setup guidance and delivery support"].forEach(function(x){perks.appendChild(el("div","deliver-item","✓  "+x));}); details.appendChild(perks); box.appendChild(details);

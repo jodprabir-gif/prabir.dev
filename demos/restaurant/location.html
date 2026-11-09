@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Location — Saffron House, Kolkata</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="topbar">
+    <a class="brand" href="index.html">SAFFRON HOUSE<small>KOLKATA · EST. 2012</small></a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reservations.html">Reservations</a>
+      <a href="location.html" class="active">Location</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="cta" href="reservations.html">Book a Table</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Visit Us</h2>
+    <p class="lead">Right in the middle of Kolkata's favourite food street.</p>
+    <div class="split" style="align-items:start">
+      <img data-photo="exterior" alt="Saffron House entrance, Park Street Kolkata">
+      <div>
+        <h2 style="text-align:left">Park Street, Kolkata</h2>
+        <p>Find us on Park Street — Kolkata's most loved dining street, minutes from the metro and easy to reach by taxi or bus.</p>
+        <table class="hours">
+          <tr><td>Monday – Friday</td><td>12:00 – 3:30 PM · 7:00 – 11:00 PM</td></tr>
+          <tr><td>Saturday – Sunday</td><td>12:00 – 4:00 PM · 7:00 – 11:30 PM</td></tr>
+        </table>
+        <p style="margin-top:16px"><a class="btn" href="https://maps.google.com/?q=Park+Street+Kolkata" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        <p style="margin-top:10px;color:#6b5a44">Valet parking available in the evenings. The nearest metro station is a 5-minute walk away.</p>
+      </div>
+    </div>
+    <div class="mapbox" style="margin-top:28px">
+      <b>MAP — add your Google Maps embed here</b>
+      <p>Replace this box with your restaurant's verified Google Maps embed during customization.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>SAFFRON HOUSE</h4><p>Fine Indian dining in Kolkata. Family recipes, slow cooking, warm hospitality.</p></div>
+    <div><h4>Visit Us</h4><p>Park Street, Kolkata<br>Lunch 12:00 – 3:30 PM<br>Dinner 7:00 – 11:00 PM</p></div>
+    <div><h4>Contact</h4><p>Call: +91 90000 00000<br>hello@saffronhouse.demo</p></div>
+  </div>
+  <p class="fine">Demo website — sample content for the Saffron House restaurant template. Replace with your restaurant's real details. · Website template by <a href="../../index.html">PRABIR.DEV</a></p>
+</footer>
+<script src="photos.js"></script>
+<script>
+(function(){function fill(){if(!window.RESTO_PHOTOS)return false;document.querySelectorAll("[data-photo]").forEach(function(im){var k=im.getAttribute("data-photo");if(RESTO_PHOTOS[k])im.src=RESTO_PHOTOS[k];});return true;}if(!fill()){var t=setInterval(function(){if(fill())clearInterval(t);},100);setTimeout(function(){clearInterval(t);},5000);}})();
+</script>
+</body>
+</html>

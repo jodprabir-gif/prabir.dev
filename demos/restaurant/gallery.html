@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Saffron House, Kolkata</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="topbar">
+    <a class="brand" href="index.html">SAFFRON HOUSE<small>KOLKATA · EST. 2012</small></a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="reservations.html">Reservations</a>
+      <a href="location.html">Location</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="cta" href="reservations.html">Book a Table</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Gallery</h2>
+    <p class="lead">Our dining room, our kitchen, our food — and the families who fill our tables.</p>
+    <div class="gallery-grid">
+      <figure><img data-photo="interior" alt="Elegant dining hall"><figcaption>The dining hall — warm light, quiet corners, big tables.</figcaption></figure>
+      <figure><img data-photo="biryani" alt="Kolkata chicken biryani"><figcaption>Signature Kolkata chicken biryani, served on dum.</figcaption></figure>
+      <figure><img data-photo="spread" alt="Full Indian food spread"><figcaption>A full family spread — biryani, curries, naan and paneer tikka.</figcaption></figure>
+      <figure><img data-photo="birthday" alt="Birthday celebration dinner"><figcaption>Birthday dinners — cake, candles and the whole family.</figcaption></figure>
+      <figure><img data-photo="dinner" alt="Family dinner together"><figcaption>Three generations at one table.</figcaption></figure>
+      <figure><img data-photo="rooftop" alt="Rooftop dining in the evening"><figcaption>Rooftop evenings under the lights.</figcaption></figure>
+      <figure><img data-photo="kitchen" alt="Chefs cooking in the kitchen"><figcaption>Inside our kitchen — fresh spices, live cooking.</figcaption></figure>
+      <figure><img data-photo="chef" alt="Chef plating a dish"><figcaption>Every plate finished by hand.</figcaption></figure>
+      <figure><img data-photo="exterior" alt="Restaurant entrance on Park Street"><figcaption>Our entrance on Park Street, Kolkata.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>SAFFRON HOUSE</h4><p>Fine Indian dining in Kolkata. Family recipes, slow cooking, warm hospitality.</p></div>
+    <div><h4>Visit Us</h4><p>Park Street, Kolkata<br>Lunch 12:00 – 3:30 PM<br>Dinner 7:00 – 11:00 PM</p></div>
+    <div><h4>Contact</h4><p>Call: +91 90000 00000<br>hello@saffronhouse.demo</p></div>
+  </div>
+  <p class="fine">Demo website — sample content for the Saffron House restaurant template. Replace with your restaurant's real details. · Website template by <a href="../../index.html">PRABIR.DEV</a></p>
+</footer>
+<script src="photos.js"></script>
+<script>
+(function(){function fill(){if(!window.RESTO_PHOTOS)return false;document.querySelectorAll("[data-photo]").forEach(function(im){var k=im.getAttribute("data-photo");if(RESTO_PHOTOS[k])im.src=RESTO_PHOTOS[k];});return true;}if(!fill()){var t=setInterval(function(){if(fill())clearInterval(t);},100);setTimeout(function(){clearInterval(t);},5000);}})();
+</script>
+</body>
+</html>
