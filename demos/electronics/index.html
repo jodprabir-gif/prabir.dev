@@ -185,7 +185,7 @@ function renderFridgeGallery(){
 function loadRinaPhotos(){
   if(window.RINA_PHOTOS){ applyRinaPhotos(); return; }
   var s=document.createElement("script");
-  s.src="photos.js";
+  s.src="photos.js?v=2";
   s.onload=applyRinaPhotos;
   s.onerror=function(){ renderPromoBanner(); };
   document.head.appendChild(s);
