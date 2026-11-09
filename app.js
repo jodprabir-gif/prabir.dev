@@ -92,11 +92,36 @@ function stars(n){
 }
 function clear(node){ while (node.firstChild) node.removeChild(node.firstChild); }
 
+/* ===== Template cover photos (lazy-loaded images.js) ===== */
+function applyThumbPhoto(thumb, t){
+  if(window.TEMPLATE_IMAGES && TEMPLATE_IMAGES[t.id]){
+    thumb.style.backgroundImage="url("+TEMPLATE_IMAGES[t.id]+")";
+    thumb.style.backgroundSize="cover";
+    thumb.style.backgroundPosition="center";
+  } else {
+    thumb.setAttribute("data-thumb-id", t.id);
+  }
+}
+function loadTemplateImages(){
+  if(window.TEMPLATE_IMAGES || loadTemplateImages.started) return;
+  loadTemplateImages.started=true;
+  var s=document.createElement("script");
+  s.src="images.js";
+  s.onload=function(){
+    document.querySelectorAll("[data-thumb-id]").forEach(function(th){
+      var id=parseInt(th.getAttribute("data-thumb-id"),10);
+      if(TEMPLATE_IMAGES[id]){ th.style.backgroundImage="url("+TEMPLATE_IMAGES[id]+")"; th.style.backgroundSize="cover"; th.style.backgroundPosition="center"; }
+    });
+  };
+  document.head.appendChild(s);
+}
+
 /* ===== Template cards ===== */
 function makeCard(t){
   const card = el("article", "card");
   const thumb = el("div", "thumb");
   thumb.style.background = "linear-gradient(135deg," + t.col + ",#111)";
+  applyThumbPhoto(thumb, t);
   const tag = el("span", "tag", t.cat);
   thumb.appendChild(tag);
   const nameInThumb = el("span", null, " " + t.name);
@@ -133,6 +158,7 @@ function makeCard(t){
 
 let currentCat = "";
 function renderGrid(){
+  loadTemplateImages();
   const grid = $("#productGrid");
   const q = $("#searchQ").value.trim().toLowerCase();
   const cat = $("#catFilter").value;
@@ -311,6 +337,7 @@ function renderDetail(id){
 /* ===== Home — itheit-style shop landing: pills + all 20 cards + FAQ ===== */
 let homeCat = "";
 function renderHomeGrid(){
+  loadTemplateImages();
   const grid = $("#homeGrid");
   let list = TEMPLATES.slice();
   if (homeCat) list = list.filter(function(t){ return t.cat === homeCat; });
