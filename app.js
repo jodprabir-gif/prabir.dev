@@ -145,6 +145,7 @@ function makeCard(t){
   const row = el("div", "btnrow");
   const demoBtn = el("a", "btn small ghost", "Live Demo");
   if (t.id === 1){ demoBtn.href = "demos/restaurant/index.html"; demoBtn.target = "_blank"; demoBtn.rel = "noopener"; }
+  else if (t.id === 15){ demoBtn.href = "demos/electronics/index.html"; demoBtn.target = "_blank"; demoBtn.rel = "noopener"; }
   else { demoBtn.href = "#/product/" + t.id; }
   const buyBtn = el("a", "btn small green", "Buy Now");
   buyBtn.href = "#/product/" + t.id;
@@ -252,6 +253,15 @@ function loadRestoPhotos(cb){
   s.onerror=function(){ cb(); };
   document.head.appendChild(s);
 }
+/* ===== Rina Mobile demo photos (lazy-loaded, only for template 15) ===== */
+function loadRinaPhotos(cb){
+  if(window.RINA_PHOTOS){ cb(); return; }
+  var s=document.createElement("script");
+  s.src="demos/electronics/photos.js";
+  s.onload=function(){ cb(); };
+  s.onerror=function(){ cb(); };
+  document.head.appendChild(s);
+}
 function renderDetail(id){
   const box = $("#detailBox"); clear(box);
   const t = byId(id);
@@ -293,14 +303,14 @@ function renderDetail(id){
   pricebox.append(ownOption,hostedOption);
   pricebox.appendChild(el("p","package-includes","Domain + hosting option covers the first 1 year only. Renewal after year one is separate and depends on the provider and domain extension."));
   copy.appendChild(pricebox);
-  const actions=el("div","btnrow"); const buy=el("a","btn product-buy","CHOOSE OPTION / ORDER ON WHATSAPP"); buy.href=waLink(payMessage(t)); buy.target="_blank"; buy.rel="noopener"; const demoLink=el("a","btn ghost","Explore website pages ↓"); demoLink.href="#product-pages"; demoLink.addEventListener("click",function(e){e.preventDefault(); nav.scrollIntoView({behavior:"smooth",block:"start"});}); if(t.id===1){const openDemo=el("a","btn","OPEN LIVE RESTAURANT DEMO"); openDemo.href="demos/restaurant/index.html"; openDemo.target="_blank"; openDemo.rel="noopener"; actions.append(openDemo);} actions.append(buy,demoLink); copy.appendChild(actions);
+  const actions=el("div","btnrow"); const buy=el("a","btn product-buy","CHOOSE OPTION / ORDER ON WHATSAPP"); buy.href=waLink(payMessage(t)); buy.target="_blank"; buy.rel="noopener"; const demoLink=el("a","btn ghost","Explore website pages ↓"); demoLink.href="#product-pages"; demoLink.addEventListener("click",function(e){e.preventDefault(); nav.scrollIntoView({behavior:"smooth",block:"start"});}); if(t.id===1){const openDemo=el("a","btn","OPEN LIVE RESTAURANT DEMO"); openDemo.href="demos/restaurant/index.html"; openDemo.target="_blank"; openDemo.rel="noopener"; actions.append(openDemo);} else if(t.id===15){const openDemo=el("a","btn","OPEN LIVE ELECTRONICS DEMO"); openDemo.href="demos/electronics/index.html"; openDemo.target="_blank"; openDemo.rel="noopener"; actions.append(openDemo);} actions.append(buy,demoLink); copy.appendChild(actions);
   const visual=el("div","product-visual"); visual.appendChild(el("div","visual-window-top","●  ●  ●     ORIGINAL BUSINESS WEBSITE CONCEPT"));
   const visualInner=el("div","visual-window-inner"); visualInner.style.background="linear-gradient(135deg,"+t.col+"dd,#101820)"; visualInner.appendChild(el("span","visual-kicker","A WEBSITE MADE FOR YOUR BUSINESS")); visualInner.appendChild(el("strong",null,t.head)); visualInner.appendChild(el("small",null,"Responsive · Multi-page · Customizable")); visual.appendChild(visualInner); hero.append(copy,visual); box.appendChild(hero);
   const nav=el("nav","detail-page-nav"); nav.id="product-pages"; nav.setAttribute("aria-label","Website page sections"); nav.appendChild(el("b",null,"INSIDE THIS WEBSITE")); sections.forEach(function(label,i){const a=el("a",null,label); a.href="#demo-section-"+i; nav.appendChild(a);}); box.appendChild(nav);
   const overview=el("section","product-overview"); overview.appendChild(el("div","section-kicker","01 / WEBSITE STRUCTURE")); overview.appendChild(el("h2",null,"A complete website, not just a single landing page")); overview.appendChild(el("p","section-lead","Every template opens as its own product page inside PRABIR.DEV. The delivered website is planned with dedicated, connected sections. Business-specific text, images, prices and real contact details will be added during customization."));
   const featureGrid=el("div","pro-feature-grid"); t.feat.forEach(function(f,i){const c=el("article","pro-feature"); c.appendChild(el("span","feature-index",String(i+1).padStart(2,"0"))); c.appendChild(el("h3",null,f)); c.appendChild(el("p",null,"Dedicated responsive section designed around the needs of this business.")); featureGrid.appendChild(c);}); overview.appendChild(featureGrid); box.appendChild(overview);
-  const showcase=el("section","showcase-section"); showcase.appendChild(el("div","section-kicker","02 / PAGE-BY-PAGE PREVIEW")); showcase.appendChild(el("h2",null,"Explore the pages included in this website")); showcase.appendChild(el("p","section-lead",t.id===1 ? "The restaurant demo is live with real photos — open it from the button above, or preview each page below." : "Photo placeholders are intentional. Your original Flow AI images can be added later without rebuilding the page layout."));
-  const pageGrid=el("div","demo-page-grid"); sections.forEach(function(label,i){const card=el("article","demo-page-card"); card.id="demo-section-"+i; const image=el("div","demo-page-image"); image.style.setProperty("--tile",t.col); image.appendChild(el("span",null,String(i+1).padStart(2,"0"))); image.appendChild(el("small",null,t.id===1 ? "REAL PHOTO · OPEN THE LIVE DEMO" : "PHOTO SLOT · ADD YOUR IMAGE")); card.appendChild(image); card.appendChild(el("div","demo-page-copy")); card.lastChild.appendChild(el("h3",null,label)); card.lastChild.appendChild(el("p",null,"Professionally structured "+label.toLowerCase()+" page with responsive layout and clear navigation.")); pageGrid.appendChild(card);}); showcase.appendChild(pageGrid);
+  const showcase=el("section","showcase-section"); showcase.appendChild(el("div","section-kicker","02 / PAGE-BY-PAGE PREVIEW")); showcase.appendChild(el("h2",null,"Explore the pages included in this website")); showcase.appendChild(el("p","section-lead",t.id===1 ? "The restaurant demo is live with real photos — open it from the button above, or preview each page below." : t.id===15 ? "The Rina Mobile electronics demo is live with real store photos — open it from the button above, or preview each page below." : "Photo placeholders are intentional. Your original Flow AI images can be added later without rebuilding the page layout."));
+  const pageGrid=el("div","demo-page-grid"); sections.forEach(function(label,i){const card=el("article","demo-page-card"); card.id="demo-section-"+i; const image=el("div","demo-page-image"); image.style.setProperty("--tile",t.col); image.appendChild(el("span",null,String(i+1).padStart(2,"0"))); image.appendChild(el("small",null,(t.id===1||t.id===15) ? "REAL PHOTO · OPEN THE LIVE DEMO" : "PHOTO SLOT · ADD YOUR IMAGE")); card.appendChild(image); card.appendChild(el("div","demo-page-copy")); card.lastChild.appendChild(el("h3",null,label)); card.lastChild.appendChild(el("p",null,"Professionally structured "+label.toLowerCase()+" page with responsive layout and clear navigation.")); pageGrid.appendChild(card);}); showcase.appendChild(pageGrid);
   if(t.id===1){
     var restoPagePhotos=["interior","chef","spread","dinner","rooftop","exterior","kitchen"];
     loadRestoPhotos(function(){
@@ -308,6 +318,16 @@ function renderDetail(id){
       pageGrid.querySelectorAll(".demo-page-image").forEach(function(im,i){
         var k=restoPagePhotos[i];
         if(RESTO_PHOTOS[k]){ im.style.backgroundImage="url("+RESTO_PHOTOS[k]+")"; im.style.backgroundSize="cover"; im.style.backgroundPosition="center"; }
+      });
+    });
+  }
+  else if(t.id===15){
+    var rinaPagePhotos=["interior","mobiles","brands","banner","exterior","appliances","customer1","customer5"];
+    loadRinaPhotos(function(){
+      if(!window.RINA_PHOTOS) return;
+      pageGrid.querySelectorAll(".demo-page-image").forEach(function(im,i){
+        var k=rinaPagePhotos[i];
+        if(RINA_PHOTOS[k]){ im.style.backgroundImage="url("+RINA_PHOTOS[k]+")"; im.style.backgroundSize="cover"; im.style.backgroundPosition="center"; }
       });
     });
   }
@@ -321,6 +341,17 @@ function renderDetail(id){
       photoGallery.querySelectorAll("[data-resto-photo]").forEach(function(slot){
         var k=slot.getAttribute("data-resto-photo");
         if(RESTO_PHOTOS[k]){ slot.style.backgroundImage="url("+RESTO_PHOTOS[k]+")"; slot.style.backgroundSize="cover"; slot.style.backgroundPosition="center"; slot.style.color="#fff"; slot.style.textShadow="0 1px 6px rgba(0,0,0,.85)"; }
+      });
+    });
+  } else if(t.id===15){
+    photoGallery.appendChild(el("h3",null,"14 real photos inside the live electronics demo"));
+    var rinaGallery=[["interior","Inside the store"],["exterior","Shop front"],["banner","Offers banner"],["mobiles","Mobile display"],["brands","OPPO & Vivo display"],["appliances","Refrigerators"],["iphone","iPhone display"],["customer1","Vivo S2 purchase"],["customer2","Vivo S2 handover"],["customer3","Customer visit"],["customer4","Vivo Y21 5G"],["customer5","Happy customer"],["customer6","Vivo Y31 5G"],["customer7","Vivo V70 Elite"]];
+    rinaGallery.forEach(function(pair){var slot=el("div","photo-slot");slot.setAttribute("data-rina-photo",pair[0]);slot.appendChild(el("b",null,pair[1]));photoGallery.appendChild(slot);});
+    loadRinaPhotos(function(){
+      if(!window.RINA_PHOTOS) return;
+      photoGallery.querySelectorAll("[data-rina-photo]").forEach(function(slot){
+        var k=slot.getAttribute("data-rina-photo");
+        if(RINA_PHOTOS[k]){ slot.style.backgroundImage="url("+RINA_PHOTOS[k]+")"; slot.style.backgroundSize="cover"; slot.style.backgroundPosition="center"; slot.style.color="#fff"; slot.style.textShadow="0 1px 6px rgba(0,0,0,.85)"; }
       });
     });
   } else {
