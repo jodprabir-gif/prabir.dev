@@ -192,5 +192,6 @@ function loadRinaPhotos(){
 }
 function brandGo(b){filterCat('Mobile');filterSubcat(b);}
 if(products.some(p=>p.category==="AC")){products=products.filter(p=>p.category!=="AC");saveAll();}
+if(settings&&(/kolkata/i.test(settings.address||"")||!settings.map)){if(/kolkata/i.test(settings.address||""))settings.address="Basiram Bazzar, Basanti, West Bengal 743312";if(!settings.map)settings.map="https://maps.app.goo.gl/NP8b9RE8GUJXbQpq6";saveAll();}
 renderCats();renderProducts(products.filter(p=>p.featured));renderReviews();updateCart();applySettings();loadRinaPhotos();
 </script></body></html>
