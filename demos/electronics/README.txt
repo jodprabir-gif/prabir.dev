@@ -7,7 +7,7 @@ OPEN / PREVIEW
 
 ADMIN
 - ☰ menu > Admin Panel
-- Demo password: change-me-123 (change it immediately)
+- Admin password: set by the site owner, not written in this file.
 - Add WhatsApp number in international digits format, e.g. 919876543210.
 - Add Facebook URL, store address, Google Maps URL.
 - Add/edit/delete products, price, image URL, RAM/ROM variants.
